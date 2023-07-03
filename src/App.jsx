@@ -1,22 +1,23 @@
+import { useState } from 'react';
+import Header from './components/Header';
 
 function App() {
+    const [isDark, setIsDark] = useState(false);
+    const styles = isDark ? 'dark font-nunito' : 'font-nunito';
 
-  return (
-    <>
-    {/* Header */}
+    return (
+        <div className={styles}>
+            {/* Header */}
+            <Header isDark={isDark} setDark={setIsDark} />
+            {/* Main */}
 
-    {/* Main */}
+            {/* Search Bar */}
 
-    {/* Search Bar */}
+            {/* Filter */}
 
-    {/* Filter */}
-
-    {/* Cards */}
-      <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-    </>
-  )
+            {/* Cards */}
+        </div>
+    );
 }
 
-export default App
+export default App;
