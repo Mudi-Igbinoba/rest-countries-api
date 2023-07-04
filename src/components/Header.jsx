@@ -7,7 +7,7 @@ const Header = ({ isDark, setDark }) => {
     };
 
     return (
-        <header className=' shadow-md text-blue-1200 dark:text-white dark:bg-blue-1000'>
+        <header className='shadow-md dark:bg-blue-1000'>
             <div className='px-4 py-9 md:px-9 min-[1440px]:px-0 min-[1440px]:py-7 flex flex-wrap justify-between items-center container mx-auto'>
                 <h1>
                     <a href='#' className='font-extrabold text-lg lg:text-2xl'>
