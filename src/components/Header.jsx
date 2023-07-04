@@ -15,7 +15,9 @@ const Header = ({ isDark, setDark }) => {
                     </a>
                 </h1>
 
-                <button onClick={setDarkMode}>
+                <button
+                    onClick={setDarkMode}
+                    className='focus-visible:outline-none'>
                     {isDark ? (
                         <>
                             <HiMoon className='inline text-xl lg:text-2xl me-2 lg:me-3 mb-0.5 lg:mb-1' />
