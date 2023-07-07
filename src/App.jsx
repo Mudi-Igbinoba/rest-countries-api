@@ -13,7 +13,7 @@ function App() {
                 {/* Header */}
                 <Header isDark={isDark} setDark={setIsDark} />
                 {/* Main */}
-                <main className='bg-zinc-50 dark:bg-blue-1100 min-h-screen'>
+                <main className='bg-zinc-50 dark:bg-blue-1100 min-h-screen transition-all duration-100'>
                     <div className='container mx-auto px-4 py-8 md:px-9 min-[1440px]:px-0 lg:py-12'>
                         <div className='flex flex-wrap justify-between items-center'>
                             <SearchBar />

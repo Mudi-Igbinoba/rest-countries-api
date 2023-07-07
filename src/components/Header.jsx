@@ -7,17 +7,19 @@ const Header = ({ isDark, setDark }) => {
     };
 
     return (
-        <header className='shadow-md dark:bg-blue-1000'>
+        <header className='shadow-md dark:bg-blue-1000 transition-all duration-100'>
             <div className='px-4 py-9 md:px-9 min-[1440px]:px-0 min-[1440px]:py-7 flex flex-wrap justify-between items-center container mx-auto'>
                 <h1>
-                    <a href='#' className='font-extrabold text-lg lg:text-2xl'>
+                    <a
+                        href='#'
+                        className='font-extrabold text-lg lg:text-2xl transition-all duration-100'>
                         Where in the world?
                     </a>
                 </h1>
 
                 <button
                     onClick={setDarkMode}
-                    className='focus-visible:outline-none'>
+                    className='focus-visible:outline-none transition-all duration-100'>
                     {isDark ? (
                         <>
                             <HiMoon className='inline text-xl lg:text-2xl me-2 lg:me-3 mb-0.5 lg:mb-1' />
