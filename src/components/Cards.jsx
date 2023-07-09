@@ -7,7 +7,7 @@ const Cards = ({ name, flag, region, population, capital }) => {
                 <img
                     className='rounded-t-lg w-full h-full'
                     src={flag}
-                    alt={name}
+                    alt={`The flag of ${name}`}
                 />
             </div>
 

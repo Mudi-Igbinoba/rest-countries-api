@@ -1,13 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import Dropdown from './components/Dropdown';
 import Cards from './components/Cards';
-import data from './data.json';
+import Skeleton from './components/Skeleton';
 
 function App() {
+    // https://restcountries.com/v3.1/all?fields=name,flags,capital,region,cca3,population,subregion,tld,subregion,borders,languages,currencies
     const [isDark, setIsDark] = useState(false);
     const styles = isDark ? 'dark font-nunito' : 'font-nunito';
+    const [countries, setCountries] = useState();
+
+    useEffect(() => {
+        fetch(
+            'https://restcountries.com/v3.1/all?fields=name,flags,capital,region,cca3,population,subregion,tld,subregion,borders,languages,currencies'
+        )
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then((data) => {
+                setCountries(data);
+            });
+    }, [0]);
 
     return (
         <div className={styles}>
@@ -23,16 +40,20 @@ function App() {
                         </section>
 
                         <section className='mt-9 lg:mt-14 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-x-10 gap-y-12 md:gap-y-20'>
-                            {data.map((e) => (
-                                <Cards
-                                    key={e.alpha2Code}
-                                    name={e.name}
-                                    region={e.region}
-                                    flag={e.flag}
-                                    population={e.population}
-                                    capital={e.capital}
-                                />
-                            ))}
+                            {countries
+                                ? countries.map((e) => (
+                                      <Cards
+                                          key={e.cca3}
+                                          name={e.name.common}
+                                          region={e.region}
+                                          flag={e.flags.svg}
+                                          population={e.population}
+                                          capital={e.capital[0]}
+                                      />
+                                  ))
+                                : Array.from({ length: 250 }).map((e, i) => (
+                                      <Skeleton key={i} />
+                                  ))}
                         </section>
                     </section>
                 </main>
